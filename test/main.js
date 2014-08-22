@@ -1,14 +1,14 @@
 'use strict';
 
 var should = require('should');
-var APPNAME = require('../');
+var revisit = require('../');
 
 require('mocha');
 
-describe('APPNAME', function() {
+describe('revisit', function() {
   describe('FUNCTIONNAME()', function() {
     it('should TASKNAME', function(done) {
-      should.exist(APPNAME);
+      should.exist(revisit);
       done();
     });
   });

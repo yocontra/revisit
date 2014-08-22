@@ -1,10 +1,10 @@
 {
-  "name": "APPNAME",
-  "description": "DESCRIPTIONHERE",
+  "name": "revisit",
+  "description": "Wrapper around revisit.link spec",
   "version": "0.0.1",
-  "homepage": "http://github.com/GITUSERNAME/APPNAME",
-  "repository": "git://github.com/GITUSERNAME/APPNAME.git",
-  "author": "YOURNAME YOUREMAIL (YOURDOMAIN)",
+  "homepage": "http://github.com/contra/revisit",
+  "repository": "git://github.com/contra/revisit.git",
+  "author": "Eric Schoffstall contra@wearefractal.com (http://contra.io)",
   "dependencies": {
     "body-parser": "^1.6.5",
     "data-uri-to-buffer": "0.0.3",
@@ -35,7 +35,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://github.com/wearefractal/APPNAME/raw/master/LICENSE"
+      "url": "http://github.com/wearefractal/revisit/raw/master/LICENSE"
     }
   ]
 }

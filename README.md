@@ -1,4 +1,4 @@
-# APPNAME [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Support us][gittip-image]][gittip-url] [![Build Status][travis-image]][travis-url] [![Coveralls Status][coveralls-image]][coveralls-url]
+# revisit [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Support us][gittip-image]][gittip-url] [![Build Status][travis-image]][travis-url] [![Coveralls Status][coveralls-image]][coveralls-url]
 
 
 ## Information
@@ -6,11 +6,11 @@
 <table>
 <tr>
 <td>Package</td>
-<td>APPNAME</td>
+<td>revisit</td>
 </tr>
 <tr>
 <td>Description</td>
-<td>DESCRIPTIONHERE</td>
+<td>Wrapper around revisit.link spec</td>
 </tr>
 <tr>
 <td>Node Version</td>
@@ -23,47 +23,38 @@
 ## Install
 
 ```
-npm install APPNAME --save
+npm install revisit --save
 
 ```
 ## Example
 
 ```js
+var revisit = require('revisit');
 
-EXAMPLEHERE
+// start a server that transforms images
 
+var server = revisit.server({
+  transform: function(file, meta, cb) {
+    // do something to file
+    // file has type and data attributes
+    cb(null, file);
+  }
+});
+
+// revisit.server returns an express server
+// so you can tack on any middleware here
+
+
+server.listen(8080);
 ```
 
------------
----
-### REMOVE THIS:
-###Directions for boiler use:
-####Replace All occurrences in All files with your name or information:
-
-- APPNAME: Your app name
-- GITUSERNAME: Your Git Username
-- DESCRIPTIONHERE: The description of your app
-- EXAMPLEHERE: The README example for your app
-- YOURNAME: Your human name, or display name
-- YOURDOMAIN: Your FULL website domain or empty (including the http/https)
-- YOUREMAIL: Your email address
-
-#### DELETE the .git folder!
-Run `git init` and configure your git repo.
-
-
------------
----
-
-
-
-You can view more examples in the [example folder.](https://github.com/GITUSERNAME/APPNAME/tree/master/examples)
+You can view more examples in the [example folder.](https://github.com/contra/revisit/tree/master/examples)
 
 ## LICENSE
 
 (MIT License)
 
-Copyright (c) 2014 YOURNAME <YOUREMAIL>
+Copyright (c) 2014 Eric Schoffstall <contra@wearefractal.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -90,18 +81,18 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 [gittip-url]: https://www.gittip.com/WeAreFractal/
 [gittip-image]: http://img.shields.io/gittip/WeAreFractal.svg
 
-[downloads-image]: http://img.shields.io/npm/dm/APPNAME.svg
-[npm-url]: https://npmjs.org/package/APPNAME
-[npm-image]: http://img.shields.io/npm/v/APPNAME.svg
+[downloads-image]: http://img.shields.io/npm/dm/revisit.svg
+[npm-url]: https://npmjs.org/package/revisit
+[npm-image]: http://img.shields.io/npm/v/revisit.svg
 
-[travis-url]: https://travis-ci.org/GITUSERNAME/APPNAME
-[travis-image]: https://travis-ci.org/GITUSERNAME/APPNAME.png?branch=master
+[travis-url]: https://travis-ci.org/contra/revisit
+[travis-image]: https://travis-ci.org/contra/revisit.png?branch=master
 
-[coveralls-url]: https://coveralls.io/r/GITUSERNAME/APPNAME
-[coveralls-image]: https://coveralls.io/repos/GITUSERNAME/APPNAME/badge.png
+[coveralls-url]: https://coveralls.io/r/contra/revisit
+[coveralls-image]: https://coveralls.io/repos/contra/revisit/badge.png
 
-[depstat-url]: https://david-dm.org/GITUSERNAME/APPNAME
-[depstat-image]: https://david-dm.org/GITUSERNAME/APPNAME.png
+[depstat-url]: https://david-dm.org/contra/revisit
+[depstat-image]: https://david-dm.org/contra/revisit.png
 
-[david-url]: https://david-dm.org/GITUSERNAME/APPNAME
-[david-image]: https://david-dm.org/GITUSERNAME/APPNAME.png?theme=shields.io
+[david-url]: https://david-dm.org/contra/revisit
+[david-image]: https://david-dm.org/contra/revisit.png?theme=shields.io
