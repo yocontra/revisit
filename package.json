@@ -1,7 +1,7 @@
 {
   "name": "revisit",
   "description": "Wrapper around revisit.link spec",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "http://github.com/contra/revisit",
   "repository": "git://github.com/contra/revisit.git",
   "author": "Eric Schoffstall contra@wearefractal.com (http://contra.io)",
