@@ -24,8 +24,8 @@
 
 ```
 npm install revisit --save
-
 ```
+
 ## Example
 
 ```js

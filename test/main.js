@@ -6,9 +6,10 @@ var revisit = require('../');
 require('mocha');
 
 describe('revisit', function() {
-  describe('FUNCTIONNAME()', function() {
-    it('should TASKNAME', function(done) {
-      should.exist(revisit);
+  describe('server()', function() {
+    it('should return a server with no options', function(done) {
+      var server = revisit.server();
+      should.exist(server);
       done();
     });
   });
