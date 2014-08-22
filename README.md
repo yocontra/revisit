@@ -31,9 +31,25 @@ npm install revisit --save
 ```js
 var revisit = require('revisit');
 
-// start a server that transforms images
+// start a server that transforms data
+var server = revisit.server(function(file, meta, cb) {
+  // do something to file
+  // file has type and data attributes
+  cb(null, file);
+});
 
+// revisit.server returns an express server
+// so you can tack on any middleware here
+
+server.listen(8080);
+```
+
+```js
+var revisit = require('revisit');
+
+// start a server that transforms data
 var server = revisit.server({
+  limit: '10mb', // upload limit
   transform: function(file, meta, cb) {
     // do something to file
     // file has type and data attributes
@@ -43,7 +59,6 @@ var server = revisit.server({
 
 // revisit.server returns an express server
 // so you can tack on any middleware here
-
 
 server.listen(8080);
 ```
