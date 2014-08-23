@@ -35,34 +35,24 @@ npm install revisit --save
 
 ```js
 var revisit = require('revisit');
+var map = require('through2-map');
+
+function glitch(opt) {
+  return map(function(buf, idx){
+    // do some stuff to the buffer
+    return buf;
+  });
+}
 
 // start a server that transforms data
-var server = revisit.server(function(buf, cb) {
-  // do something to buffer
-  cb(null, buf);
-});
+var server = revisit.server(function(req){
+  // take in a request
+  // return a stream that the body will be transformed through
+  return glitch(req.query);
+}).listen(8080);
 
 // revisit.server returns an express server
 // so you can tack on any middleware here
-
-server.listen(8080);
-```
-
-```js
-var revisit = require('revisit');
-
-// start a server that transforms data
-var server = revisit.server({
-  limit: '10mb', // upload limit
-  transform: function(buf, cb) {
-    // do something to the buffer
-    cb(null, buf);
-  }
-});
-
-// revisit.server returns an express server
-// so you can tack on any middleware here
-
 server.listen(8080);
 ```
 
