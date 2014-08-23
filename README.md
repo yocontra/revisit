@@ -86,7 +86,7 @@ var file = {
   }
 };
 
-client.send(file, function(err, newFile){
+client.transform(file, function(err, newFile){
   
 });
 ```
