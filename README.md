@@ -78,8 +78,8 @@ var messColor = revisit.transform('http://meatcub.es:8000/colorize?tint=solar');
 
 // write file to server
 data
-  .pipe(glitch)
-  .pipe(messColor)
+  .pipe(glitch())
+  .pipe(messColor())
   .pipe(fs.createWriteStream('yo-glitched.jpg'));
 ```
 
