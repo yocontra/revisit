@@ -37,7 +37,7 @@ npm install revisit --save
 var revisit = require('revisit');
 var map = require('through2-map');
 
-function glitch(opt) {
+function glitch(query) {
   return map(function(buf, idx){
     // do some stuff to the buffer
     return buf;
@@ -45,11 +45,7 @@ function glitch(opt) {
 }
 
 // start a server that transforms data
-var server = revisit.server(function(req){
-  // take in a request
-  // return a stream that the body will be transformed through
-  return glitch(req.query);
-}).listen(8080);
+var server = revisit.server(glitch).listen(8080);
 
 // revisit.server returns an express server
 // so you can tack on any middleware here

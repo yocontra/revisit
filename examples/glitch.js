@@ -7,21 +7,28 @@ function rng(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+var jpgRand = rng.bind(null, 1, 254);
+
 function glitch(opt) {
+  // invert within 1
+  // so 3 = 0.7, 5 = 0.5, 2 = 0.8, etc.
+  var intensity = parseInt(opt.intensity) || 1;
   return map(function(buf, idx){
     for (var i = 0; i < buf.length - 1; i++) {
-      if (buf[i] !==  120) {
+      if (buf[i] !== jpgRand()) {
         continue;
       }
-      buf[i] = rng(1, 254);
+
+      if ((Math.random()*10) >= intensity) {
+        continue;
+      }
+      buf[i] = jpgRand();
     }
     return buf;
   });
 }
 
-revisit.server(function(req){
-  return glitch(req.query);
-}).listen(8080, function(err){
+revisit.server(glitch).listen(8080, function(err){
   if (err) {
     return console.error(err);
   }
