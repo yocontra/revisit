@@ -29,7 +29,9 @@ This is a work in progress - stay tuned.
 npm install revisit --save
 ```
 
-## Example
+## Examples
+
+## Server
 
 ```js
 var revisit = require('revisit');
@@ -66,7 +68,55 @@ var server = revisit.server({
 server.listen(8080);
 ```
 
-You can view more examples in the [example folder.](https://github.com/contra/revisit/tree/master/examples)
+## Client
+
+```js
+var revisit = require('revisit');
+
+var client = revisit.client('http://meatcub.es:8000');
+
+var data = fs.readFileSync('yo.jpg');
+var file = {
+  content: {
+    type: 'image/jpeg',
+    data: revisit.data('image/jpeg', data)
+  },
+  meta: {
+    yo: true
+  }
+};
+
+client.send(file, function(err, newFile){
+  
+});
+```
+
+## Pipeline
+
+```js
+var revisit = require('revisit');
+
+var pipeline = revisit.pipeline(
+  'http://service-relay.revisit.link',
+  'http://meatcub.es:8000',
+  'http://shielded-sands-7191.herokuapp.com/rotate'
+);
+
+var data = fs.readFileSync('yo.jpg');
+var file = {
+  content: {
+    type: 'image/jpeg',
+    data: revisit.data('image/jpeg', data)
+  },
+  meta: {
+    yo: true
+  }
+};
+
+pipeline.transform(file, function(err, newFile){
+  
+});
+```
 
 ## LICENSE
 
