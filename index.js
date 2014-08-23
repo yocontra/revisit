@@ -1,11 +1,9 @@
 'use strict';
 
 var createServer = require('./lib/createServer');
-var createClient = require('./lib/createClient');
-var toB64 = require('./lib/toB64');
+var transform = require('./lib/transform');
 
 module.exports = {
-  data: toB64,
   server: createServer,
-  client: createClient
+  transform: transform
 };

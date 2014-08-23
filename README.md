@@ -37,10 +37,9 @@ npm install revisit --save
 var revisit = require('revisit');
 
 // start a server that transforms data
-var server = revisit.server(function(file, meta, cb) {
-  // do something to file
-  // file has type and data attributes
-  cb(null, file);
+var server = revisit.server(function(buf, cb) {
+  // do something to buffer
+  cb(null, buf);
 });
 
 // revisit.server returns an express server
@@ -55,10 +54,9 @@ var revisit = require('revisit');
 // start a server that transforms data
 var server = revisit.server({
   limit: '10mb', // upload limit
-  transform: function(file, meta, cb) {
-    // do something to file
-    // file has type and data attributes
-    cb(null, file);
+  transform: function(buf, cb) {
+    // do something to the buffer
+    cb(null, buf);
   }
 });
 
@@ -73,49 +71,16 @@ server.listen(8080);
 ```js
 var revisit = require('revisit');
 
-var client = revisit.client('http://meatcub.es:8000');
+var data = fs.createReadStream('yo.jpg');
 
-var data = fs.readFileSync('yo.jpg');
-var file = {
-  content: {
-    type: 'image/jpeg',
-    data: revisit.data('image/jpeg', data)
-  },
-  meta: {
-    yo: true
-  }
-};
+var glitch = revisit.transform('http://meatcub.es:8000/glitch?direction=horizontal');
+var messColor = revisit.transform('http://meatcub.es:8000/colorize?tint=solar');
 
-client.transform(file, function(err, newFile){
-  
-});
-```
-
-## Pipeline
-
-```js
-var revisit = require('revisit');
-
-var pipeline = revisit.pipeline(
-  'http://service-relay.revisit.link',
-  'http://meatcub.es:8000',
-  'http://shielded-sands-7191.herokuapp.com/rotate'
-);
-
-var data = fs.readFileSync('yo.jpg');
-var file = {
-  content: {
-    type: 'image/jpeg',
-    data: revisit.data('image/jpeg', data)
-  },
-  meta: {
-    yo: true
-  }
-};
-
-pipeline.transform(file, function(err, newFile){
-  
-});
+// write file to server
+data
+  .pipe(glitch)
+  .pipe(messColor)
+  .pipe(fs.createWriteStream('yo-glitched.jpg'));
 ```
 
 ## LICENSE
