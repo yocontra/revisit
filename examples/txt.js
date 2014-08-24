@@ -17,9 +17,4 @@ function glitch(opt) {
   return duplex(write, read);
 }
 
-revisit.server(glitch).listen(8081, function(err){
-  if (err) {
-    return console.error(err);
-  }
-  console.log('Listening');
-});
+revisit.server(glitch).listen(8081);

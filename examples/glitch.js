@@ -28,9 +28,4 @@ function glitch(opt) {
   });
 }
 
-revisit.server(glitch).listen(8080, function(err){
-  if (err) {
-    return console.error(err);
-  }
-  console.log('Listening');
-});
+revisit.server(glitch).listen(8080);
